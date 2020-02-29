@@ -1,10 +1,7 @@
 <template>
     <!--    把 iconPosition 当做 key 来求它的 value-->
     <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
-<!--        <svg class="icon" v-if="icon">-->
-<!--            <use :xlink:href="`#i-${icon}`"></use>-->
-<!--        </svg>-->
-
+        <g-icon name="loading" class="loading"></g-icon>
         <g-icon v-if="icon" :name="icon"></g-icon>
         <div class="content">
             <slot></slot>
@@ -14,11 +11,11 @@
 
 <script>
     export default {
-        props:{
-            icon:String,
-            iconPosition:{
-                type:String,
-                default:'left',
+        props: {
+            icon: String,
+            iconPosition: {
+                type: String,
+                default: 'left',
                 // 属性检查器
                 validator: function (value) {
                     return value != 'left' && value != 'right' ? false : true;
@@ -30,6 +27,23 @@
 </script>
 
 <style lang="scss">
+    @keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100%{
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
     .g-button {
         font-size: var(--font-size);
         height: var(--button-height);
@@ -61,7 +75,8 @@
             order: 1;
             margin-right: .3em;
         }
-        > .content{
+
+        > .content {
             order: 2;
         }
 
@@ -71,9 +86,16 @@
                 margin-left: .3em;
                 margin-right: 0;
             }
-            > .content{
+
+            > .content {
                 order: 1;
             }
+        }
+
+        > .loading{
+            -webkit-animation: spin 2s infinite linear;
+            -o-animation: spin 2s infinite linear;
+            animation: spin 2s infinite linear;
         }
 
     }
