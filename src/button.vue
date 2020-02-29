@@ -1,8 +1,7 @@
 <template>
     <!--    把 iconPosition 当做 key 来求它的 value-->
-    <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
-        <g-icon name="loading" class="loading"></g-icon>
-        <g-icon v-if="icon" :name="icon"></g-icon>
+    <button class="g-button" :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')">
+        <g-icon v-if="icon" :name="loading ? 'loading' : icon" :class="loading ? 'loading' : undefined"></g-icon>
         <div class="content">
             <slot></slot>
         </div>
@@ -13,6 +12,10 @@
     export default {
         props: {
             icon: String,
+            loading: {
+                type: Boolean,
+                default: false
+            },
             iconPosition: {
                 type: String,
                 default: 'left',
@@ -35,7 +38,7 @@
             -o-transform: rotate(0deg);
             transform: rotate(0deg);
         }
-        100%{
+        100% {
             -webkit-transform: rotate(360deg);
             -moz-transform: rotate(360deg);
             -ms-transform: rotate(360deg);
@@ -92,7 +95,7 @@
             }
         }
 
-        > .loading{
+        > .loading {
             -webkit-animation: spin 2s infinite linear;
             -o-animation: spin 2s infinite linear;
             animation: spin 2s infinite linear;
