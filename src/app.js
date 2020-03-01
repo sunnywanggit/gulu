@@ -1,21 +1,25 @@
-import  Vue from 'vue'
-import  Button from './button'
-import  Icon from './components/icon'
+import Vue from 'vue'
+import Button from './button'
+import Icon from './components/icon'
 import buttonGroup from './button-group.vue'
 
-Vue.component('g-button',Button)
-Vue.component('g-icon',Icon)
-Vue.component('g-button-group',buttonGroup)
+Vue.component('g-button', Button)
+Vue.component('g-icon', Icon)
+Vue.component('g-button-group', buttonGroup)
 new Vue({
-    el:'#app',
-    data:{
-        loading1:false
+    el: '#app',
+    data: {
+        loading1: false
     }
 })
 
-import  chai from 'chai'
+import chai from 'chai'
 
 const expect = chai.expect
+
+import spies from 'chai-spies'
+
+chai.use(spies)
 
 //测试 settings
 {
@@ -23,8 +27,8 @@ const expect = chai.expect
     const Constructor = Vue.extend(Button)
     //创建测试用例
     const vm = new Constructor({
-        propsData:{
-            icon:'settings'
+        propsData: {
+            icon: 'settings'
         }
     })
     vm.$mount('#test')
@@ -39,9 +43,9 @@ const expect = chai.expect
     const Constructor = Vue.extend(Button)
     //创建测试用例
     const vm = new Constructor({
-        propsData:{
-            icon:'settings',
-            loading:true
+        propsData: {
+            icon: 'settings',
+            loading: true
         }
     })
     vm.$mount()
@@ -57,8 +61,8 @@ const expect = chai.expect
     const Constructor = Vue.extend(Button)
     //创建测试用例
     const vm = new Constructor({
-        propsData:{
-            icon:'settings',
+        propsData: {
+            icon: 'settings',
         }
     })
     vm.$mount(div)
@@ -77,9 +81,9 @@ const expect = chai.expect
     const Constructor = Vue.extend(Button)
     //创建测试用例
     const vm = new Constructor({
-        propsData:{
-            icon:'settings',
-            iconPosition:'right'
+        propsData: {
+            icon: 'settings',
+            iconPosition: 'right'
         }
     })
     vm.$mount(div)
@@ -95,18 +99,18 @@ const expect = chai.expect
     //创建构造函数构造测试用例
     const Constructor = Vue.extend(Button)
     //创建测试用例
-    const vm= new Constructor({
-        propsData:{
-            icon:'settings',
-            iconPosition:'right'
+    const vm = new Constructor({
+        propsData: {
+            icon: 'settings',
         }
     })
     vm.$mount()
-    vm.$on('click',function () {
-        console.log(1);
-    })
+    let spy = chai.spy(function () {})
+    vm.$on('click',spy )
     let button = vm.$el
     button.click()
+    //这就叫做函数 mock
+    expect(spy).to.have.been.called()
 
 }
 
