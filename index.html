@@ -37,16 +37,7 @@
 <body>
 <div id="app">
     <div class="box">
-        <s-input value="张三" disabled></s-input>
-    </div>
-    <div class="box">
-        <s-input value="张三" readonly></s-input>
-    </div>
-    <div class="box">
-        <s-input value="张三"></s-input>
-    </div>
-    <div class="obx">
-        <s-input value="张" error="姓名不能少于两个字"></s-input>
+        <s-input value="三" @change="inputChange" @input="onInput" @blur="onBlur" @focus="onFocus"></s-input>
     </div>
 </div>
 
