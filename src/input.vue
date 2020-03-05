@@ -6,7 +6,7 @@
                @blur="$emit('blur',$event.target.value)"
                @focus="$emit('focus',$event.target.value)"
         >
-        <!--        这里直接使用template进行包裹，真实一个不错的方法-->
+        <!--        这里直接使用template进行包裹，真是一个不错的方法，可以避免给外层的元素在去添加样式-->
         <template v-if="error">
             <g-icon name="error" class="icon-error"></g-icon>
             <span class="error-message">{{error}}</span>
