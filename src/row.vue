@@ -1,11 +1,29 @@
 <template>
-    <div class="row">
+    <div class="row" :style="{marginLeft:-gap/2+'px',marginRight:-gap/2+'px'}">
         <slot></slot>
     </div>
 </template>
+<script>
+    export default {
+        name:'s-row',
+        props:{
+            gap:{
+                type:[Number,String]
+            }
+        },
+        mounted() {
+            console.log(this.$children);
+            this.$children.forEach((vm)=>{
+                vm.gap= this.gap
+            })
+        }
+    }
+
+</script>
 
 <style scoped lang="scss">
     .row {
         display: flex;
     }
+
 </style>
