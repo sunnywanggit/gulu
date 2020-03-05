@@ -1,10 +1,10 @@
 <template>
     <div class="wrapper" :class="{error}">
         <input type="text" :value="value" :readonly="readonly" :disabled="disabled"
-               @change="$emit('change',$event)"
-               @input="$emit('input',$event)"
-               @blur="$emit('blur',$event)"
-               @focus="$emit('focus',$event)"
+               @change="$emit('change',$event.target.value)"
+               @input="$emit('input',$event.target.value)"
+               @blur="$emit('blur',$event.target.value)"
+               @focus="$emit('focus',$event.target.value)"
         >
         <!--        这里直接使用template进行包裹，真实一个不错的方法-->
         <template v-if="error">
