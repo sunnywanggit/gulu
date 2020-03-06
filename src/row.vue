@@ -1,5 +1,5 @@
 <template>
-    <div class="row" :style="rowStyle">
+    <div class="row" :style="rowStyle" :class="rowClass">
         <slot></slot>
     </div>
 </template>
@@ -9,6 +9,13 @@
         props: {
             gap: {
                 type: [Number, String]
+            },
+            align: {
+                type: String,
+                validator: function (value) {
+                    return ['left', 'right','center'].indexOf(value) !== -1
+                }
+
             }
         },
         mounted() {
@@ -24,8 +31,12 @@
                     marginLeft: -gap / 2 + 'px',
                     marginRight: -gap / 2 + 'px'
                 }
-
+            },
+            rowClass(){
+                let {align} = this
+                return align && 'row-'+align
             }
+
         }
     }
 
@@ -34,6 +45,19 @@
 <style scoped lang="scss">
     .row {
         display: flex;
+
+        &-left{
+            justify-content: flex-start;
+        }
+        &-center{
+            justify-content: center;
+        }
+        &-right{
+            justify-content: flex-end;
+        }
+
+
     }
+
 
 </style>
