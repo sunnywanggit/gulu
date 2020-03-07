@@ -24,31 +24,23 @@
             --border-color: #999;
             --border-color-hover: #666;
         }
-
-        #app {
-            margin: 20px;
+        .demo{
+            border: 1px solid red;
         }
 
-        body {
-            font-size: var(--font-size);
-        }
+
     </style>
 </head>
 <body>
 <div id="app">
-    <s-row>
-        <s-col span="24"
-               :ipad="{span:12,offset:20}"
-               :narrow="{span:8,offset:20}"
-               :pc="{span:12}"
-        >111</s-col>
-        <s-col span="24"
-               :ipad="{span:12,offset:20}"
-               :narrow="{span:8,offset:20}"
-               :pc="{span:12}"
-        >222</s-col>
-    </s-row>
-
+    <s-layout style="height:100vh;">
+        <s-sider class="demo">sider</s-sider>
+        <s-layout>
+            <s-header class="demo">header</s-header>
+            <s-content class="demo">content</s-content>
+            <s-footer class="demo">footer</s-footer>
+        </s-layout>
+    </s-layout>
 </div>
 
 <script src="./src/app.js"></script>
