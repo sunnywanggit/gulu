@@ -21,55 +21,41 @@
     export default {
         name: 's-col',
         props: {
-            span: { type: [Number, String] },
-            offset: { type: [Number, String] },
-            ipad: { type: Object, validator },
-            narrow: { type: Object, validator },
-            pc: { type: Object, validator },
-            wide: { type: Object, validator }
+            span: {type: [Number, String]},
+            offset: {type: [Number, String]},
+            ipad: {type: Object, validator},
+            narrow: {type: Object, validator},
+            pc: {type: Object, validator},
+            wide: {type: Object, validator}
         },
         data() {
             return {
                 gap: 0
             }
         },
+        methods: {
+            createClass: function (obj, str) {
+                let array = []
+                if (!obj) { return [] }
+                if (obj.span) { array.push(`${str}span-${obj.span}`) }
+                if (obj.offset) { array.push(`${str}offset-${obj.offset}`) }
+                return array
+            }
+        },
         computed: {
             colStyle() {
-                return {
-                    marginLeft: this.gap / 2 + 'px',
-                    marginRight: this.gap / 2 + 'px'
-                }
+                return { marginLeft: this.gap / 2 + 'px', marginRight: this.gap / 2 + 'px' }
             },
             colClass() {
                 //解构赋值，这个要好好学学
-                let {span, offset, ipad, narrow, pc,wide} = this
-                let ipadClass= []
-                let narrowClass = []
-                let pcClass = []
-                let wideClass = []
-
-                if(ipad){
-                   ipadClass= [`ipad-span-${ipad.span}`, `ipad-offset-${ipad.offset}`]
-                }
-                if(narrow){
-                    narrowClass= [`narrow-span-${narrow.span}`, `narrow-offset-${narrow.offset}`]
-                }
-                if(pc){
-                    pcClass = [`pc-span-${pc.span}`, `pc-offset-${pc.offset}`]
-                }
-                if(wide){
-                    wideClass= [`wide-span-${wide.span}`, `wide-offset-${wide.offset}`]
-
-                }
-
-
+                let {span, offset, ipad, narrow, pc, wide} = this
                 return [
                     span && 'span' + span,
                     offset && 'offset' + offset,
-                    ...ipadClass,
-                    ...narrowClass,
-                    ...pcClass,
-                    ...wideClass
+                    ...this.createClass(ipad, 'ipad-'),
+                    ...this.createClass(narrow, 'narrow-'),
+                    ...this.createClass(pc, 'pc-'),
+                    ...this.createClass(wide, 'wide-')
                 ]
             }
         }
@@ -91,7 +77,7 @@
         }
     }
 
-    @media(min-width: 577px){
+    @media(min-width: 577px) {
         @for $n from 1 through 24 {
             .ipad-span-#{$n} {
                 width: ($n/24) * 100%;
@@ -103,11 +89,11 @@
         }
     }
 
-    @media(min-width: 769px)  {
+    @media(min-width: 769px) {
         @for $n from 1 through 24 {
             .narrow-span-#{$n} {
                 width: ($n/24) * 100%;
-                background:orange;
+                background: orange;
             }
             .narrow-offset-#{$n} {
                 margin-right: ($n/24) * 100%;
@@ -115,7 +101,7 @@
         }
     }
 
-    @media(min-width: 993px){
+    @media(min-width: 993px) {
         @for $n from 1 through 24 {
             .pc-span-#{$n} {
                 width: ($n/24) * 100%;
@@ -131,7 +117,7 @@
         @for $n from 1 through 24 {
             .wide-span-#{$n} {
                 width: ($n/24) * 100%;
-                background:grey;
+                background: grey;
             }
             .wide-offset-#{$n} {
                 margin-right: ($n/24) * 100%;
