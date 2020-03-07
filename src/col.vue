@@ -91,19 +91,7 @@
         }
     }
 
-    @media(max-width: 576px) {
-        @for $n from 1 through 24 {
-            .phone-span-#{$n} {
-                width: ($n/24) * 100%;
-                background: blue;
-            }
-            .phone-offset-#{$n} {
-                margin-right: ($n/24) * 100%;
-            }
-        }
-    }
-
-    @media(min-width: 577px) and (max-width: 768px) {
+    @media(min-width: 577px){
         @for $n from 1 through 24 {
             .ipad-span-#{$n} {
                 width: ($n/24) * 100%;
@@ -115,7 +103,7 @@
         }
     }
 
-    @media(min-width: 769px) and (max-width: 992px) {
+    @media(min-width: 769px)  {
         @for $n from 1 through 24 {
             .narrow-span-#{$n} {
                 width: ($n/24) * 100%;
@@ -127,7 +115,7 @@
         }
     }
 
-    @media(min-width: 993px) and (max-width: 1200px) {
+    @media(min-width: 993px){
         @for $n from 1 through 24 {
             .pc-span-#{$n} {
                 width: ($n/24) * 100%;
