@@ -17,14 +17,14 @@ Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
 Vue.component('g-button-group', buttonGroup)
 Vue.component('s-input', Input)
-Vue.component('s-row',Row)
-Vue.component('s-col',Col)
-Vue.component('s-layout',Layout)
-Vue.component('s-header',Header)
-Vue.component('s-content',Content)
-Vue.component('s-footer',Footer)
-Vue.component('s-sider',Sider)
-Vue.component('s-toast',Toast)
+Vue.component('s-row', Row)
+Vue.component('s-col', Col)
+Vue.component('s-layout', Layout)
+Vue.component('s-header', Header)
+Vue.component('s-content', Content)
+Vue.component('s-footer', Footer)
+Vue.component('s-sider', Sider)
+Vue.component('s-toast', Toast)
 
 Vue.use(Plugin)
 
@@ -32,14 +32,23 @@ new Vue({
     el: '#app',
     data: {
         loading1: false,
-        message:'h1'
+        message: 'h1'
     },
-    created(){
+    created() {
 
     },
-    methods:{
-        showToast(){
-            this.$toast('i am clicked')
+    methods: {
+        showToast() {
+            this.$toast('没有开启没有'
+                , {
+                    closeButton: {
+                        text: '知道了',
+                        callback() {
+                            console.log('用户说他知道了');
+                        }
+                    },
+                    enableHtml: true
+                })
         }
     }
 })
