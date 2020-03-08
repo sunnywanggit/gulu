@@ -1,9 +1,11 @@
 <template>
-        <div :class="[`toast`,`${position}`]" ref="toast" >
+    <div :class="[`wrapper`,`${position}`]">
+        <div :class="[`toast`]" ref="toast" >
             <slot v-if="!enableHtml"></slot>
             <div v-else v-html="$slots.default[0]"></div>
             <span v-if="closeButton" class="close" @click="onClickClose" ref="line">{{closeButton.text}}</span>
         </div>
+    </div>
 </template>
 <script>
 
@@ -83,21 +85,46 @@
 </script>
 
 <style scoped lang="scss">
-    @keyframes fade-in {
-        0% {
-            opacity: 0;
-            transform:translateY(100%);
-        }
-        100%{
-            opacity: 1;
-            transform:translateY(0%);
-        }
-    }
-    .toast {
-        animation:fade-in 1s;
+    @keyframes fade-up{ 0% { opacity: 0; transform:translateY(100%); } 100%{ opacity: 1; transform:translateY(0%); } }
+    @keyframes fade-down{ 0% { opacity: 0; transform:translateY(-100%); } 100%{ opacity: 1; transform:translateY(0%); } }
+    @keyframes fade-out{ 0% { opacity: 0; } 100%{ opacity: 1; } }
+    .wrapper{
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
+
+        &.bottom {
+            bottom: 0;
+            border-radius: 0;
+            .toast{
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                animation:fade-up 1s;
+            }
+        }
+        &.top {
+            top: 0;
+            .toast{
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                -webkit-animation: fade-down 1s;
+                -o-animation: fade-down 1s;
+                animation: fade-down 1s;
+            }
+        }
+
+        &.middle {
+            top: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            .toast{
+                -webkit-animation: fade-out .5s;
+                -o-animation: fade-out .5s;
+                animation: fade-out .5s;
+            }
+        }
+    }
+
+    .toast {
         font-style: 14px;
         text-align: center;
         display: flex;
@@ -108,18 +135,6 @@
         color: white;
         padding: 4px 16px;
 
-        &.top {
-            top: 0;
-        }
-
-        &.bottom {
-            bottom: 0;
-        }
-
-        &.middle {
-            top: 50%;
-            transform: translateY(-50%);
-        }
 
 
         .close {

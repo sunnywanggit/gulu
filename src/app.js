@@ -38,7 +38,16 @@ new Vue({
 
     },
     methods: {
-        showToast() {
+        showToast1(){
+            this.showToast('top')
+        },
+        showToast2(){
+            this.showToast('middle')
+        },
+        showToast3(){
+            this.showToast('bottom')
+        },
+        showToast(site) {
             this.$toast(
                 `${Math.random()*100}`,
                 {
@@ -48,7 +57,7 @@ new Vue({
                             console.log('用户说他知道了');
                         }
                     },
-                    position:'bottom'
+                    position:site
                 }
             )
         }
