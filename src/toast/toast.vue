@@ -1,5 +1,5 @@
 <template>
-    <div class="toast" ref="toast">
+    <div :class="[`toast`,`${position}`]" ref="toast">
         <slot v-if="!enableHtml"></slot>
         <div v-else v-html="$slots.default[0]"></div>
         <span v-if="closeButton" class="close" @click="onClickClose" ref="line">{{closeButton.text}}</span>
@@ -34,38 +34,55 @@
             enableHtml: {
                 type: Boolean,
                 default: false
-            }
-        },
-        mounted() {
-            this.execAutoClose()
-            this.updateStyles()
-        },
-        methods: {
-            updateStyles() {
-                this.$nextTick(() => {
-                    //一般来说JS得出的结果和你预想的结果不一样，一般都是异步的问题
-                    this.$refs.line.style.height = this.$refs.toast.getBoundingClientRect().height + 'px'
-                })
             },
-            execAutoClose() {
-                if (this.autoClose) {
-                    setTimeout(() => {
-                        this.close()
-                    }, this.autoCloseDelay * 1000)
+            position: {
+                type: String,
+                default: 'top',
+                validator: function (value) {
+                    return ['top','bottom', 'middle'].indexOf(value) !== -1
                 }
-            },
-            close() {
-                this.$el.remove()
-                this.$destroy()
-            },
-            onClickClose() {
-                this.close()
-                if (this.closeButton && typeof this.closeButton.callback === 'function') {
-                    this.closeButton.callback()
-                }
-
             }
         }
+    ,
+    mounted()
+    {
+        this.execAutoClose()
+        this.updateStyles()
+    }
+    ,
+    methods: {
+        updateStyles()
+        {
+            this.$nextTick(() => {
+                //一般来说JS得出的结果和你预想的结果不一样，一般都是异步的问题
+                this.$refs.line.style.height = this.$refs.toast.getBoundingClientRect().height + 'px'
+            })
+        }
+    ,
+        execAutoClose()
+        {
+            if (this.autoClose) {
+                setTimeout(() => {
+                    this.close()
+                }, this.autoCloseDelay * 1000)
+            }
+        }
+    ,
+        close()
+        {
+            this.$el.remove()
+            this.$destroy()
+        }
+    ,
+        onClickClose()
+        {
+            this.close()
+            if (this.closeButton && typeof this.closeButton.callback === 'function') {
+                this.closeButton.callback()
+            }
+
+        }
+    }
     }
 
 </script>
@@ -73,7 +90,6 @@
 <style scoped lang="scss">
     .toast {
         position: fixed;
-        top: 0;
         left: 50%;
         transform: translateX(-50%);
         font-style: 14px;
@@ -85,6 +101,19 @@
         background: rgba(0, 0, 0, 0.75);
         color: white;
         padding: 4px 16px;
+
+        &.top{
+            top: 0;
+        }
+
+        &.bottom{
+            bottom: 0;
+        }
+
+        &.middle{
+            top: 50%;
+            transform: translateY(-50%);
+        }
 
 
         .close {

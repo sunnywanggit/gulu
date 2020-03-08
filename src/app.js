@@ -39,16 +39,18 @@ new Vue({
     },
     methods: {
         showToast() {
-            this.$toast('没有开启没有'
-                , {
+            this.$toast(
+                '没有开启没有',
+                {
                     closeButton: {
                         text: '知道了',
                         callback() {
                             console.log('用户说他知道了');
                         }
                     },
-                    enableHtml: true
-                })
+                    position:'middle'
+                }
+            )
         }
     }
 })
