@@ -12,7 +12,6 @@ export default {
             })
             toast.$slots.default = [message]
             toast.$mount()
-            console.log(onOff);
             if(onOff){
                 toast.$el.remove()
                 document.body.appendChild(toast.$el)
