@@ -11,6 +11,7 @@
 <script>
     import Icon from './components/icon'
     export default {
+        name:'s-button',
         components:{
             'g-icon':Icon
         },

@@ -4,9 +4,16 @@
     </div>
 </template>
 <script>
-    export default {}
+    export default {
+        name: 's-sider',
+    }
 
 </script>
 <style scoped lang="scss">
-    .sider{ display: flex; }
+    .sider {
+        display: flex;
+        position: relative;
+        flex-grow: 1;
+
+    }
 </style>
