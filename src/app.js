@@ -40,7 +40,7 @@ new Vue({
     methods: {
         showToast() {
             this.$toast(
-                '没有开启没有',
+                `${Math.random()*100}`,
                 {
                     closeButton: {
                         text: '知道了',
