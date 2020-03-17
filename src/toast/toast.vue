@@ -19,7 +19,7 @@
             },
             autoCloseDelay: {
                 type: Number,
-                default: 500
+                default: 10
             },
             closeButton: {
                 type: Object,
