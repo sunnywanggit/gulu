@@ -1,0 +1,13 @@
+.row[data-v-53663d] {
+  display: flex;
+  flex-wrap: wrap;
+}
+.row-left[data-v-53663d] {
+  justify-content: flex-start;
+}
+.row-center[data-v-53663d] {
+  justify-content: center;
+}
+.row-right[data-v-53663d] {
+  justify-content: flex-end;
+}
