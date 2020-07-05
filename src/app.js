@@ -30,13 +30,8 @@ Vue.use(Plugin)
 
 new Vue({
     el: '#app',
-    data: {
-        loading1: false,
-        message: 'h1'
-    },
-    created() {
-
-    },
+    data: { loading1: false, message: 'h1' },
+    created() { },
     methods: {
         showToast1(){
             this.showToast('top')

@@ -31,6 +31,7 @@
   align-items: center;
   /*这就是经验，下面一句代码解决了三个button不再同一水平线上的css问题*/
   vertical-align: middle;
+  cursor: pointer;
 }
 .g-button[data-v-0f40b4]:hover {
   border-color: #666;
@@ -58,10 +59,29 @@
 .g-button.icon-right > .content[data-v-0f40b4] {
   order: 1;
 }
+.g-button.primary[data-v-0f40b4] {
+  border: none;
+  background-color: #0085fa;
+  color: white;
+}
+.g-button.primary > .icon[data-v-0f40b4] {
+  color: white;
+}
+.g-button.dashed[data-v-0f40b4] {
+  border: 1px dashed #999;
+  background: white;
+}
+.g-button.text[data-v-0f40b4] {
+  border: none;
+}
+.g-button.link[data-v-0f40b4] {
+  border: none;
+  color: #0085fa;
+}
 .g-button > .loading[data-v-0f40b4] {
-  -webkit-animation: spin-data-v-0f40b4 2s infinite linear;
-  -o-animation: spin-data-v-0f40b4 2s infinite linear;
-  animation: spin-data-v-0f40b4 2s infinite linear;
+  -webkit-animation: spin-data-v-0f40b4 3s infinite linear;
+  -o-animation: spin-data-v-0f40b4 3s infinite linear;
+  animation: spin-data-v-0f40b4 3s infinite linear;
 }
 .g-button-group[data-v-169640] {
   display: inline-flex;

@@ -6,13 +6,9 @@
 <script>
     import './svg'
     export  default {
-        props:['name']
+        props:{name:String}
     }
 </script>
 <style scoped lang="scss">
-    .icon{
-        width: 1em;
-        height: 1em;
-    }
-
+    .icon{ width: 1em; height: 1em; }
 </style>
