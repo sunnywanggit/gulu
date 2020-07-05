@@ -13,14 +13,8 @@
     export default {
         name: 's-toast',
         props: {
-            autoClose: {
-                type: Boolean,
-                default: true
-            },
-            autoCloseDelay: {
-                type: Number,
-                default: 10
-            },
+            autoClose: { type: Boolean, default: true },
+            autoCloseDelay: { type: Number, default: 10 },
             closeButton: {
                 type: Object,
                 default() {
@@ -33,16 +27,11 @@
                 }
 
             },
-            enableHtml: {
-                type: Boolean,
-                default: false
-            },
+            enableHtml: { type: Boolean, default: false },
             position: {
                 type: String,
                 default: 'top',
-                validator: function (value) {
-                    return ['top', 'bottom', 'middle'].indexOf(value) !== -1
-                }
+                validator: function (value) { return ['top', 'bottom', 'middle'].indexOf(value) !== -1 }
             }
         }
         ,

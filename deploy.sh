@@ -1,5 +1,4 @@
 # 构建
-vuepress build docs
 
 # 导航到构建输出目录
 cd docs/.vuepress/dist
