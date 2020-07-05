@@ -56,25 +56,50 @@ title: Button 按钮
 <s-button type="dashed" icon="search">Search</s-button>
 ```
 
+## 按钮尺寸
+
+按钮有大、中、小三种尺寸。
+
+通过设置 `size` 为 `large` `small` 分别把按钮设为大、小尺寸。若不设置 `size`，则尺寸为中 `middle`。
+
+<ClientOnly>
+<demo-button3></demo-button3>
+</ClientOnly>
+
+```html
+<s-button type="primary" size="large">Primary</s-button>
+<s-button icon="search" size="middle">Default</s-button>
+<s-button type="dashed" size="small">Dashed</s-button>
+```
+
+## 不可用状态
+
+添加 disabled 属性即可让按钮处于不可用状态，同时按钮样式也会改变。
+
+<ClientOnly>
+<unavailable-button></unavailable-button>
+</ClientOnly>
+
+```html
+<s-button type="primary">Primary</s-button>
+<s-button type="primary" disabled>Primary(disabled)</s-button>
+<s-button type="default">Default</s-button>
+<s-button type="dashed" disabled>Default(disabled)</s-button>
+<s-button type="dashed" >Dashed</s-button>
+<s-button type="dashed" disabled >Dashed(disabled)</s-button>
+```
 ## 组合按钮
+
+组合按钮的功能应用场景较少，可以根据自己的实际情况选择使用。
 
 <ClientOnly>
 <demo-button-group></demo-button-group>
 </ClientOnly>
 
-#### 代码
 
 ``` html
 <s-button-group>
     <s-button icon="left" icon-position="left">上一页</s-button>
     <s-button icon="right" icon-position="right">下一页</s-button>
 </s-button-group>
-
-<script>
-    import DemoButtonGroup from "../.vuepress/components/demo-button-group";
-    export default {
-        components: {DemoButtonGroup}
-    }
-</script>
-
 ```

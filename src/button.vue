@@ -1,7 +1,7 @@
 <template>
     <!--    把 iconPosition 当做 key 来求它的 value-->
     <button class="g-button"
-            :class="{[`icon-${iconPosition}`]:true,[`${type}`]:true}"
+            :class="{[`icon-${iconPosition}`]:true,[`${type}`]:true,[`${size}`]:true,[`${disabled === '' ? 'disabled' :''}`]:true,}"
             @click="$emit('click')">
         <g-icon v-if="icon || loading" :name="loading ? 'loading' : icon" :class="loading ? 'loading' : ''"></g-icon>
         <div class="content">
@@ -25,7 +25,10 @@
                 validator: function (value) { return value != 'left' && value != 'right' ? false : true }
             },
             //按钮类型属性
-            type: {type: String, default: ''}
+            type: {type: String, default: ''},
+            //按钮大小
+            size: {type: String, default: 'middle'},
+            disabled:String
         },
     }
 </script>
@@ -76,18 +79,32 @@
             > .content { order: 1; }
             }
 
+        /*按钮类型*/
         &.primary {
             border: none;
             background-color: #0085fa;
             color: white;
+
             > .icon {color: white;}
             }
-        &.dashed{  border: 1px dashed #999; background: white;}
-        &.text{border: none;}
-        &.link{border: none;color: #0085fa;}
+
+        &.dashed { border: 1px dashed #999; background: white;}
+
 
         > .loading { -webkit-animation: spin 3s infinite linear; -o-animation: spin 3s infinite linear; animation: spin 3s infinite linear; }
 
+        /*按钮大小*/
+
+        &.small {height:28px;font-size: 10px}
+
+        &.large { height: 36px;font-size: 16px}
+
+        /*禁用状态*/
+        &.disabled{ background-color: #f3f3f3; color: #c1c1c1; border: 1px solid #c1c1c1;cursor: not-allowed; }
+
+        &.text {border: none;background-color: white;}
+
+        &.link {border: none;color: #0085fa;}
         }
 
 </style>

@@ -12591,7 +12591,13 @@ var _default = {
     type: {
       type: String,
       default: ''
-    }
+    },
+    //按钮大小
+    size: {
+      type: String,
+      default: 'middle'
+    },
+    disabled: String
   }
 };
 exports.default = _default;
@@ -12616,6 +12622,8 @@ exports.default = _default;
         ((_obj = {}),
         (_obj["icon-" + _vm.iconPosition] = true),
         (_obj["" + _vm.type] = true),
+        (_obj["" + _vm.size] = true),
+        (_obj["" + (_vm.disabled === "" ? "disabled" : "")] = true),
         _obj),
       on: {
         click: function($event) {
